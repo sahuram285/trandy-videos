@@ -1,0 +1,20 @@
+<%= link_to 'Add Video', new_video_path, class: 'btn btn-primary pull-right' %>
+
+<br>
+
+<div class="col-md-12 videos">
+  <% if @videos.present? %>
+    <% @videos.each do |video| %>
+      <div class="col-md-5 video">
+        <a href="<%= video_path(video) %>">
+          <%= video_tag(video.file, controls: true, autobuffer: true, style: 'width: 100%;') %>
+        </a>
+        <br>
+        <strong><%= video.name %></strong>
+        <span><%= video.description.truncate(50) %></span>
+      </div>
+    <% end %>
+  <% else %>
+    <h3>You have not uploaded any video yet!</h3>
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+.pull-right {
+  float: right;
+}
+
+.videos {
+  padding: 20px;
+  text-align: center;
+
+  .video {
+    display: inline-block;
+  }
+}
+
+video {
+  width: 100%;
+}

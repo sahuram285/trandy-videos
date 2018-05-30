@@ -1,0 +1,34 @@
+<%= form_with(model: video, local: true, multipart: true) do |form| %>
+  <% if video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :video_name, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :video_description, class: 'form-control' %>
+  </div>
+
+  <% unless video.persisted? %>
+    <div class="field">
+      <%= form.label :file %>
+      <%= form.file_field :file, id: :video_file, required: true, class: 'form-control' %>
+    </div>
+  <% end %>
+  <br><br>
+  <div class="actions">
+    <%= form.submit class: 'form-control btn btn-primary' %>
+  </div>
+<% end %>

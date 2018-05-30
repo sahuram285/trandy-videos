@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+  <%= link_to 'Add Video', new_video_path, class: 'btn btn-primary pull-right' %>
+<% end %>
+
+<br>
+
+<div class="col-md-12 videos">
+  <% @videos.each do |video| %>
+    <div class="col-md-5 video">
+      <a href="<%= video_path(video) %>">
+        <%= video_tag(video.file, controls: true, autobuffer: true, style: 'width: 100%;') %>
+      </a>
+      <br>
+      <strong><%= video.name %></strong> (<%= video.views %> views)
+      <br>
+      <span><%= video.description.truncate(50) %></span>
+    </div>
+  <% end %>
+</div>
